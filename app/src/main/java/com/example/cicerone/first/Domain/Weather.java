@@ -26,7 +26,7 @@ public class Weather {
         icon = new HashMap<String, String>(){
             {
                 put("01d", "sd");put("01n","sn");
-                put("02d","pcd");put("02n","pcs");
+                put("02d","pcd");put("02n","pcn");
                 put("03d","cd");put("03n","cn");
                 put("04d","fd");put("04n","fn");
                 put("09d","rd");put("09n","rn");

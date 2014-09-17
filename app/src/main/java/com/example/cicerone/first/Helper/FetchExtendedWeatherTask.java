@@ -51,10 +51,11 @@ public class FetchExtendedWeatherTask extends AFetchWeatherTask {
         final String OWM_CNT = "cnt";
         final String OWM_WEATHER = "weather";
         final String OWM_TEMPERATURE = "temp";
-        final String OWM_MAX = "max";
-        final String OWM_MIN = "min";
+        final String OWM_MAX = "temp_max";
+        final String OWM_MIN = "temp_min";
         final String OWM_DATETIME = "dt";
         final String OWM_DESCRIPTION = "main";
+        final String OWM_MAIN = "main";
         final String OWM_PRESSURE = "pressure";
         final String OWM_HUMIDITY = "humidity";
         final String OWM_ICON = "icon";
@@ -85,17 +86,19 @@ public class FetchExtendedWeatherTask extends AFetchWeatherTask {
             JSONObject IconObject = dayForecast.getJSONArray(OWM_WEATHER).getJSONObject(0);
             weather.setImage(IconObject.getString(OWM_ICON));
 
-            /* Temperatures are in a child object called "temp".  Try not to name variables
-               "temp" when working with temperature.  It confuses everybody.*/
-            JSONObject temperatureObject = dayForecast.getJSONObject(OWM_TEMPERATURE);
-            weather.setMax(String.valueOf(temperatureObject.getDouble(OWM_MAX)));
-            weather.setMin(String.valueOf(temperatureObject.getDouble(OWM_MIN)));
+
+            JSONObject mainObject = dayForecast.getJSONObject(OWM_MAIN);
+
+            /* temperature.*/
+            weather.setTemp(String.valueOf(mainObject.getDouble(OWM_TEMPERATURE)));
+            weather.setMax(String.valueOf(mainObject.getDouble(OWM_MAX)));
+            weather.setMin(String.valueOf(mainObject.getDouble(OWM_MIN)));
 
             /* pressure */
-            weather.setPressure(String.valueOf(dayForecast.getDouble(OWM_PRESSURE)));
+            weather.setPressure(String.valueOf(mainObject.getDouble(OWM_PRESSURE)));
 
             /* humidity */
-            weather.setHumidity(String.valueOf(dayForecast.getDouble(OWM_HUMIDITY)));
+            weather.setHumidity(String.valueOf(mainObject.getDouble(OWM_HUMIDITY)));
 
             //highAndLow = formatHighLows(high, low);
             result_data[i] = weather;
@@ -137,8 +140,8 @@ public class FetchExtendedWeatherTask extends AFetchWeatherTask {
             Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
                     .appendQueryParameter(LAT_PARAM,String.valueOf(params[0]))
                     .appendQueryParameter(LON_PARAM,String.valueOf(params[1]))
-                    .appendQueryParameter(FORMAT_PARAM, FetchReducedWeatherTask._format)
-                    .appendQueryParameter(UNITS_PARAM, FetchReducedWeatherTask._units)
+                    /*.appendQueryParameter(FORMAT_PARAM, FetchReducedWeatherTask._format)
+                    .appendQueryParameter(UNITS_PARAM, FetchReducedWeatherTask._units)*/
                     .build();
 
             URL url = new URL(builtUri.toString());

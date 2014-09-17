@@ -4,15 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.example.cicerone.first.Fragment.ForecastFragment;
+import com.example.cicerone.first.Fragment.Forecast3hFragment;
 import com.example.cicerone.first.R;
 
 
@@ -24,7 +22,7 @@ public class DetailActivity extends ActionBarActivity {
         setContentView(R.layout.activity_detail);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, new Forecast3hFragment())
                     .commit();
         }
 
@@ -62,9 +60,9 @@ public class DetailActivity extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_3h, container, false);
 
-            Intent intent = getActivity().getIntent();
+            /*Intent intent = getActivity().getIntent();
             String s;
             if (intent!=null && intent.hasExtra("DAY_FORECAST")){
                 Log.v("TAGTAG", "fineeee");
@@ -74,7 +72,7 @@ public class DetailActivity extends ActionBarActivity {
             }
             else{
                 Log.v("TAGTAG","Null intent or no extras");
-            }
+            }*/
 
             return rootView;
         }

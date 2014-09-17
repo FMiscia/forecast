@@ -8,8 +8,6 @@
     <string name="action_map">Show Position</string>
     <string name="list_item_element">el</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_dayforecast_list">DayForecasts</string>
-    <string name="title_dayforecast_detail">DayForecast Detail</string>
     <string name="title_activity_detail">DetailActivity</string>
     <string name="pref_latitude_label">Latitude</string>
     <string name="pref_latitude_key" translatable="false">latitude</string>

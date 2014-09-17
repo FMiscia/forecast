@@ -1,37 +1,35 @@
 package com.example.cicerone.first.Fragment;
 
 
-import android.content.Intent;
+
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.cicerone.first.Activity.DetailActivity;
 import com.example.cicerone.first.Adapter.ItemAdapter;
-import com.example.cicerone.first.Domain.Weather;
 import com.example.cicerone.first.Factory.FetchWeatherTaskFactory;
 import com.example.cicerone.first.Helper.AFetchWeatherTask;
 import com.example.cicerone.first.R;
 
 /**
- * Encapsulates fetching the forecast and displaying it as a {@link ListView} layout.
+ * A simple {@link Fragment} subclass.
+ *
  */
-public class ForecastFragment extends Fragment {
+public class Forecast3hFragment extends Fragment {
+
 
     private ItemAdapter _mForecastAdapter;
 
 
-    public ForecastFragment() {
+    public Forecast3hFragment() {
     }
 
     @Override
@@ -42,11 +40,11 @@ public class ForecastFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.forecastfragment,menu);
+        inflater.inflate(R.menu.detail,menu);
     }
 
     public void goWeather(){
-        AFetchWeatherTask fwt = FetchWeatherTaskFactory.getInstance().makeFetchWeatherTask(false,_mForecastAdapter);
+        AFetchWeatherTask fwt = FetchWeatherTaskFactory.getInstance().makeFetchWeatherTask(true,_mForecastAdapter);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String lat = prefs.getString(getString(R.string.pref_latitude_key),getString(R.string.pref_latitude_default));
         String lon = prefs.getString(getString(R.string.pref_longitude_key),getString(R.string.pref_longitude_default));
@@ -79,12 +77,12 @@ public class ForecastFragment extends Fragment {
         _mForecastAdapter =
                 new ItemAdapter(
                         getActivity()
-                         );
+                );
 
-        final View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_3h, container, false);
 
         /* Get a reference to the ListView, and attach this adapter to it. */
-        ListView listView = (ListView) rootView.findViewById(R.id.listview_forecast);
+        ListView listView = (ListView) rootView.findViewById(R.id.listView3h);
         listView.setAdapter(_mForecastAdapter);
 
         this.goWeather();
@@ -96,8 +94,8 @@ public class ForecastFragment extends Fragment {
 
                 /* Executed in an Activity, so 'this' is the Context
                    The fileUrl is a string URL, such as "http://www.example.com/image.png"
-                Intent detailIntent = new Intent(getActivity(), DetailActivity.class);
-                Log.e("datetime",weather.getDatetime());
+                Intent detailIntent = new Intent(getActivity(), DetailActivity.class);*/
+        /*
                 detailIntent.putExtra("DAY_FORECAST", weather.getDatetime()+" : "+weather.getDescription());
                 startActivity(detailIntent);
             }
