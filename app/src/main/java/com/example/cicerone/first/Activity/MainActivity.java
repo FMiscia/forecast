@@ -6,6 +6,8 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.view.ViewPager;
+
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -13,24 +15,20 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.cicerone.first.ActionBar.TabListener;
+import com.example.cicerone.first.Adapter.CollectionAdapter;
 import com.example.cicerone.first.Fragment.Forecast3hFragment;
-import com.example.cicerone.first.Fragment.ForecastFragment;
+import com.example.cicerone.first.Fragment.ForecastDailyFragment;
 import com.example.cicerone.first.R;
 
 
 public class MainActivity extends ActionBarActivity {
 
     private ActionBar actionBar;
+    CollectionAdapter mCollectionAdapter;
+    ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        /*
-        avoids fragment duplication.
-         */
-        if (savedInstanceState != null) {
-            savedInstanceState.remove("android:support:fragments");
-        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -42,8 +40,8 @@ public class MainActivity extends ActionBarActivity {
 
         ActionBar.Tab tab = actionBar.newTab()
                 .setText("Daily")
-                .setTabListener(new TabListener<ForecastFragment>(
-                        this, "daily", ForecastFragment.class));
+                .setTabListener(new TabListener<ForecastDailyFragment>(
+                        this, "daily", ForecastDailyFragment.class));
         actionBar.addTab(tab);
 
         tab = actionBar.newTab()
@@ -52,12 +50,6 @@ public class MainActivity extends ActionBarActivity {
                         this, "3hours", Forecast3hFragment.class));
         actionBar.addTab(tab);
 
-
-        /*if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new ForecastFragment())
-                    .commit();
-        }*/
     }
 
     @Override

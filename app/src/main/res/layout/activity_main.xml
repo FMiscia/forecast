@@ -1,4 +1,9 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+
+<!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
@@ -8,9 +13,9 @@
     style="@style/Theme.AppCompat.Light.DarkActionBar">
 
     <TabHost
+        android:id="@android:id/tabhost"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/tabHost2"
         android:layout_gravity="center_horizontal|bottom">
 
         <LinearLayout
@@ -19,9 +24,9 @@
             android:orientation="vertical">
 
             <TabWidget
-                android:id="@+id/tabs"
+                android:id="@android:id/tabs"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"></TabWidget>
+                android:layout_height="wrap_content"/>
 
             <FrameLayout
                 android:id="@android:id/tabcontent"
@@ -49,4 +54,7 @@
             </FrameLayout>
         </LinearLayout>
     </TabHost>
+
 </FrameLayout>
+-->
+

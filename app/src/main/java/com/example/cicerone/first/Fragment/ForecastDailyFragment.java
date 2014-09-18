@@ -26,12 +26,12 @@ import com.example.cicerone.first.R;
 /**
  * Encapsulates fetching the forecast and displaying it as a {@link ListView} layout.
  */
-public class ForecastFragment extends Fragment {
+public class ForecastDailyFragment extends Fragment {
 
     private ItemAdapter _mForecastAdapter;
 
 
-    public ForecastFragment() {
+    public ForecastDailyFragment() {
     }
 
     @Override

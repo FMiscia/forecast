@@ -15,7 +15,9 @@ public class FetchWeatherTaskFactory {
     private static FetchWeatherTaskFactory _instance = null;
 
     /**
-     * According to extendedData gives an instance of FetchReducedWeatherTask or FetchExtendedWeatherTask
+     * According to extendedData gives an instance of FetchReducedWeatherTask or FetchExtendedWeatherTask.
+     * extendedData = true -> FetchExtendedWeatherTask(adapter)
+     * extendedData = false -> FetchReducedWeatherTask(adapter)
      *
      * @param extendedData
      * @return
