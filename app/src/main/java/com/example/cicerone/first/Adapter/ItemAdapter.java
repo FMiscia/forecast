@@ -34,14 +34,14 @@ public class ItemAdapter extends BaseAdapter {
     {
         this._activity = activity;
         this._items = new ArrayList<Weather>();
-        this._inflater =(LayoutInflater) _activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        _inflater =(LayoutInflater) _activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     public ItemAdapter(Activity activity, ArrayList<Weather> data)
     {
         this._activity = activity;
         this._items = data;
-        this._inflater =(LayoutInflater) _activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        _inflater =(LayoutInflater) _activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     public void clear(){
